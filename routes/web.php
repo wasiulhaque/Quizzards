@@ -20,3 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/question',function (){
+    return view('questions.question');
+});
+Route::post('submit','questionTableController@store');
