@@ -23,4 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/question',function (){
     return view('questions.question');
 });
+Route::get('registerOk',function (){
+   return view('auth.register');
+});
+Route::get('showQuestion','questionTableController@index');
 Route::post('submit','questionTableController@store');
