@@ -22,9 +22,9 @@ class CreateUsersTable extends Migration
             $table->string('institution');
             $table->string('subscription');
             $table->string('role');
-
+/*
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamps();*/
         });
     }
 

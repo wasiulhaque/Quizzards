@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\userTable;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -69,5 +71,26 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+    public function store(Request $request)
+    {
+        //
+        print_r($request->input());
+        $new_user=new userTable;
+        $temp=rand(0,100);
+        $new_user->user_id=$temp;
+        $new_user->first_name=$request->input('name');
+        $new_user->last_name=$request->input('lname');
+        $new_user->phone=$request->input('phone');
+        $new_user->password=$request->input('password');
+        $new_user->institution='IUT';
+
+        $new_user->subscription='Primary';
+        $new_user->role='Teacher';
+
+        $new_user->save();
+
+
+
     }
 }
