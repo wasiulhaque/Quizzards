@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\questionTable;
+use App\userTable;
+use http\Env\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -37,4 +40,20 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function store(\Illuminate\Http\Request $request)
+    {
+        //
+/*        print_r($request->input());*/
+        $newSession=userTable::where('phone',$request->input('phone'))
+            ->where('password',$request->input('password'))->limit(1)->firstOr(function (){
+                print_r('NO');
+            });
+        if($newSession!=null){
+            print_r('Nice');
+/*            print_r($newSession);*/
+        }
+
+    }
+
 }

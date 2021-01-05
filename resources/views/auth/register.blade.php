@@ -11,19 +11,8 @@
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
-                            <div class="form-group row">
-                                <label for="fname" class="col-md-4 col-form-label text-md-right">{{ __('fname') }}</label>
 
-                                <div class="col-md-6">
-                                    <input id="fname" type="text" class="form-control @error('fname') is-invalid @enderror" fname="fname" value="{{ old('fname') }}" required autocomplete="fname" autofocus>
 
-                                    @error('fname')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
 
                             <div class="form-group row">
                                 <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
@@ -39,7 +28,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="lname" class="col-md-4 col-form-label text-md-right">{{ __('Last name') }}</label>
+                                <label for="lname" class="col-md-4 col-form-label text-md-right">{{ __('Your name') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="lname" type="lname" class="form-control @error('lname') is-invalid @enderror" name="lname" required autocomplete="new-lname">

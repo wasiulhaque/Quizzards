@@ -27,5 +27,9 @@ Route::get('registerOk',function (){
    return view('auth.register');
 });
 Route::post('register','Auth\RegisterController@store');
+Route::get('loginOk',function (){
+    return view('auth.login');
+});
+Route::post('login','Auth\LoginController@store');
 Route::get('showQuestion','questionTableController@index');
 Route::post('submit','questionTableController@store');
