@@ -15,8 +15,9 @@ class questionTableController extends Controller
      */
     public function index()
     {
-           $question=questionTable::all();
-           return view('questions.questionTemplate')->with('question',$question);
+           $answerScript=questionTable::all();
+
+          return view('questions.answer')->with('answerScript',$answerScript);
 
                 //
     }
