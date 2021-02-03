@@ -88,6 +88,11 @@ class questionTableController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $new=questionTable::find($id);
+        $new->student_answer=$request->input('option');
+
+        $new->save();
+
     }
 
     /**

@@ -1,10 +1,11 @@
 @extends('layouts.app')
 @section('content')
-    <form action="submit" method="post">
+    @foreach($answerScript as $answer)
+    <form action="{{url('submitAnswer/'.$answer->question_id)}}" method="post">
         @csrf
-        @foreach($answerScript as $answer)
+
             <h1>
-                {{$answer->question_title}}
+                {{$answer->question_title}} {{$answer->question_id}}
             </h1>
             <input type="radio" id="A" name="option" value="A">
             <label for="A">{{$answer->option_A}}</label>
@@ -18,7 +19,7 @@
             <input type="radio" id="D" name="option" value="D">
             <label for="D">{{$answer->option_D}}</label>
             <br>
-
+            <input type="submit" id="submitAnswer" value="submitAnswer">
         @endforeach
 
     </form>

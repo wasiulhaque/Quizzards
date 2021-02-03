@@ -33,3 +33,4 @@ Route::get('loginOk',function (){
 Route::post('login','Auth\LoginController@store');
 Route::get('showQuestion','questionTableController@index');
 Route::post('submit','questionTableController@store');
+Route::post('submitAnswer/{question_id}','questionTableController@update');
