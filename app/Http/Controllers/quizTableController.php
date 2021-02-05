@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class quizTable extends Controller
+class quizTableController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,6 +35,10 @@ class quizTable extends Controller
     public function store(Request $request)
     {
         //
+        print_r($request->input());
+
+
+
     }
 
     /**
@@ -80,5 +84,12 @@ class quizTable extends Controller
     public function destroy($id)
     {
         //
+    }
+    function check(Request $request){
+
+          $idNumber=$request->input('exam_code');
+          print_r($idNumber);
+
+          return view('questions.question',compact(['idNumber']));
     }
 }

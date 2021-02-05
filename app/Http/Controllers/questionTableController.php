@@ -44,15 +44,18 @@ class questionTableController extends Controller
         //
         print_r($request->input());
         $newQuestion=new questionTable;
-        $newQuestion->question_id=11;
-        $newQuestion->exam_id=9;
+
+        $temp=rand(0,1000);
+        $temp2=rand(0,10000);
+        $newQuestion->question_id=$temp2;
+        $newQuestion->exam_id=$request->exam_id;
         $newQuestion->question_title=$request->question_name;
         $newQuestion->option_A=$request->option_A;
         $newQuestion->option_B=$request->option_B;
         $newQuestion->option_C=$request->option_C;
         $newQuestion->option_D=$request->option_D;
         $newQuestion->student_answer='A';
-        $newQuestion->correct_answer='B';
+        $newQuestion->correct_answer=$request->correctAnswer;
 
         echo $newQuestion->save();
     }

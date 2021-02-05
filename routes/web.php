@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,7 +36,13 @@ Route::post('login','Auth\LoginController@store');
 
 Route::get('showQuestion','questionTableController@index');
 Route::post('submit','questionTableController@store');
-Route::post('submitAnswer/{question_id}','questionTableController@update');
-Route::post('add_exam',function (){
-    return view('intermediate.check')->withNumber('examNumber',$examNumber);
+Route::get('quizInfo2',function (){
+    return view('Teacher.addExam');
 });
+
+Route::post('submitAnswer/{question_id}','questionTableController@update');
+Route::post('submitExam/{exam_id}','quizTableController@check');
+Route::post('quizInfo','quizTableController@check');
+/*Route::post('add_exam',function (){
+    return view('intermediate.check')->withNumber('examNumber',$examNumber);
+});*/
