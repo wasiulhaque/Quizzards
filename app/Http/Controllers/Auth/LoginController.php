@@ -50,7 +50,8 @@ class LoginController extends Controller
                 print_r('NO');
             });
         if($newSession!=null){
-            print_r('Nice');
+            return view('intermediateViews.examId');
+          //  print_r('Nice');
 /*            print_r($newSession);*/
         }
 

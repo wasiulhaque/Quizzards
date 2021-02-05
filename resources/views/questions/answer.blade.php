@@ -20,8 +20,7 @@
             <label for="D">{{$answer->option_D}}</label>
             <br>
             <input type="submit" id="submitAnswer" value="submitAnswer">
-        @endforeach
-
     </form>
+    @endforeach
 
 @endsection

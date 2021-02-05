@@ -29,6 +29,7 @@ class questionTableController extends Controller
      */
     public function create()
     {
+
         //
     }
 
@@ -43,7 +44,7 @@ class questionTableController extends Controller
         //
         print_r($request->input());
         $newQuestion=new questionTable;
-        $newQuestion->question_id=10;
+        $newQuestion->question_id=11;
         $newQuestion->exam_id=9;
         $newQuestion->question_title=$request->question_name;
         $newQuestion->option_A=$request->option_A;
