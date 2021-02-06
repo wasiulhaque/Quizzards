@@ -39,7 +39,11 @@ Route::post('submit','questionTableController@store');
 Route::get('quizInfo2',function (){
     return view('Teacher.addExam');
 });
+Route::get('examDimu',function (){
+    return view('students.searchExam');
+});
 
+Route::post('search_exam','questionTableController@showQuestion');
 Route::post('submitAnswer/{question_id}','questionTableController@update');
 Route::post('submitExam/{exam_id}','quizTableController@check');
 Route::post('quizInfo','quizTableController@check');

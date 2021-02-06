@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+<!--    <title>{{ config('app.name', 'Laravel') }}</title>-->
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+<!--    <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -31,14 +31,14 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                    &lt;!&ndash; Left Side Of Navbar &ndash;&gt;
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
+                    &lt;!&ndash; Right Side Of Navbar &ndash;&gt;
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+                        &lt;!&ndash; Authentication Links &ndash;&gt;
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -70,11 +70,11 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>-->
 
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
+<!--    </div>-->
 </body>
 </html>

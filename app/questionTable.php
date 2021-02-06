@@ -12,4 +12,5 @@ class questionTable extends Model
     protected $primaryKey="question_id";
     public $timestamps=False;
     //
+
 }

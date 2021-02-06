@@ -87,6 +87,7 @@ class quizTableController extends Controller
     }
     function check(Request $request){
 
+
           $idNumber=$request->input('exam_code');
           print_r($idNumber);
 

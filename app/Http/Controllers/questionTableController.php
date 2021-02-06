@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\questionTable;
 use App\quizEnroll;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class questionTableController extends Controller
 {
@@ -22,6 +23,12 @@ class questionTableController extends Controller
                 //
     }
 
+    public function showQuestion(Request $request){
+        $id=$request->input('exam_code');
+        $answerScript=questionTable::where('exam_id',$id)->get();
+        return view('questions.answer')->with('answerScript',$answerScript);
+
+    }
     /**
      * Show the form for creating a new resource.
      *
