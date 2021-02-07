@@ -27,6 +27,10 @@ Route::get('/question',function (){
 Route::get('registerOk',function (){
    return view('auth.register');
 });
+Route::get('random',function (){
+    return view('Teacher.teacherTask');
+});
+
 Route::post('register','Auth\RegisterController@store');
 Route::get('loginOk',function (){
     return view('auth.login');

@@ -80,18 +80,20 @@ class RegisterController extends Controller
         $new_user=new userTable;
         $temp=rand(0,100);
         $new_user->user_id=$temp;
-/*        $new_user->first_name=$request->input('fname');*/
+        $password=Hash::make($request->input('password'));
+        /*$new_user->first_name=$request->input('fname');*/
         $new_user->name=$request->input('lname');
         $new_user->phone=$request->input('phone');
-        $new_user->password=$request->input('password');
+        $new_user->password=$password;
         $new_user->institution='IUT';
 
         $new_user->subscription='Primary';
-        $new_user->role='Teacher';
+        $new_user->role=$request->input('role');
  /*       $new_user->updated_at=time();
         $new_user->created_at=time();*/
         $new_user->save();
-
+        print_r($new_user);
+        return view('Teacher.teacherTask',compact('temp'));
 
 
     }
