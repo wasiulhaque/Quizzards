@@ -50,3 +50,10 @@ Route::post('quizInfo','quizTableController@check');
 /*Route::post('add_exam',function (){
     return view('intermediate.check')->withNumber('examNumber',$examNumber);
 });*/
+
+
+Route::get('showResult',function (){
+   return view('students.showResult');
+});
+
+Route::post('show_result','questionTableController@showresult');

@@ -22,6 +22,22 @@ class questionTableController extends Controller
 
                 //
     }
+    function showResult(Request $request){
+        $exam_id=$request->input('exam_code');
+        $answerScript=questionTable::where('exam_id',$exam_id)->get();
+
+        $count=0;
+        foreach (questionTable::where('exam_id',$exam_id)->cursor() as $individual){
+
+            if(strcmp($individual->student_answer,$individual->correct_answer)==0){
+                $count++;
+            }
+
+        }
+        print_r($count);
+
+       /* return view('students.yourResult')->with('count',$count);*/
+    }
 
     public function showQuestion(Request $request){
         $id=$request->input('exam_code');
@@ -61,7 +77,7 @@ class questionTableController extends Controller
         $newQuestion->option_B=$request->option_B;
         $newQuestion->option_C=$request->option_C;
         $newQuestion->option_D=$request->option_D;
-        $newQuestion->student_answer='A';
+        $newQuestion->student_answer='E';
         $newQuestion->correct_answer=$request->correctAnswer;
 
         echo $newQuestion->save();

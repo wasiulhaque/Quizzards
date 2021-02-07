@@ -18,13 +18,12 @@
             <input type="radio" id="C" name="option" value="C">
             <label for="C">{{$answer->option_C}}</label>
             <br>
-            <input type="radio" id="D" name="option" value="D">
+            <input type="radio" id="D" name="option" value="DGo">
             <label for="D">{{$answer->option_D}}</label>
             <br>
-        @endforeach
-        <input type="submit" id="submitAnswer" value="submitAnswer">
-    </form>
-
+       @endforeach
+               <input type="submit" id="submitAnswer" value="submitAnswer">
+           </form>
 @endsection
 
 <!--
