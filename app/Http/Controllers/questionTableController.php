@@ -121,6 +121,18 @@ class questionTableController extends Controller
         $new->save();
 
     }
+    public function forgiveMeAllah(Request $request){
+
+
+     foreach ($request->input('option') as $optionNum=>$optionVal){
+         print_r($optionNum);
+         print_r($optionVal);
+         $new=questionTable::find($optionNum);
+         $new->student_answer=$optionVal;
+         $new->save();
+
+     }
+    }
 
     /**
      * Remove the specified resource from storage.
