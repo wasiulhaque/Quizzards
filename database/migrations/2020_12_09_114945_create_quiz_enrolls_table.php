@@ -29,6 +29,7 @@ class CreateQuizEnrollsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quiz_enrolls');
+       Schema::dropIfExists('quiz_enrolls');
+
     }
 }

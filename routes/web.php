@@ -28,7 +28,7 @@ Route::get('registerOk',function (){
    return view('auth.register');
 });
 Route::get('random',function (){
-    return view('Teacher.teacherTask');
+    return view('chart.charts');
 });
 
 Route::post('register','Auth\RegisterController@store');
@@ -63,3 +63,7 @@ Route::get('showResult',function (){
 });
 
 Route::post('show_result','questionTableController@showresult');
+Route::get('show_chart',function (){
+    return view('chart.charts');
+});
+Route::post('give_me_chart','quizEnrollController@showChart');

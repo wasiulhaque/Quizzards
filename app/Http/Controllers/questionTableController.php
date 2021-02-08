@@ -42,14 +42,14 @@ class questionTableController extends Controller
         }
         print_r($count);
         $new= new quizEnroll;
-        $new->quiz_id=$exam_id;
+        $new->quiz_id=Rand(0,100);
+        $new->result=$count;
         $new->teacher_id='123';
         $new->student_name=$name;
-        $new->total_marks=$total_mark;
-        $new->result=$count;
+        $new->total_marks=$exam_id;
 
         $new->save();
-
+        return view('chart.chartMiddleware',compact('exam_id','count'));
         /* return view('students.yourResult')->with('count',$count);*/
     }
 
