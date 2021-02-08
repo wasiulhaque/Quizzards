@@ -104,6 +104,7 @@ class quizTableController extends Controller
         $new = new quizEnroll;
         $new->quiz_id = $request->input('exam_code');
         $new->teacher_id = $request->input('teacher_id');
+        $idNumber=$request->input('exam_code');
         $new->quiz_title=$request->input('quiz_title');
         $new->marks=$request->input('marks');
         $new->starting_time=time();

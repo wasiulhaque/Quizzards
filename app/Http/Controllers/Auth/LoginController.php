@@ -45,25 +45,31 @@ class LoginController extends Controller
     public function store(\Illuminate\Http\Request $request)
     {
         //
-/*        print_r($request->input());*/
-      /*  $newSession=userTable::where('phone',$request->input('phone'))
-            ->where('password',Hash::make($request->input('password')))->limit(1)->firstOr(function (){
-                print_r('NO');
-            });*/
-        $newSession=userTable::where('phone',$request->input('phone'))->firstOr(function (){
+        /*        print_r($request->input());*/
+        /*  $newSession=userTable::where('phone',$request->input('phone'))
+              ->where('password',Hash::make($request->input('password')))->limit(1)->firstOr(function (){
+                  print_r('NO');
+              });*/
+        $newSession = userTable::where('phone', $request->input('phone'))->firstOr(function () {
             print_r('NO ID');
         });
-        if(Hash::check($request->input('password'),$newSession->password)){
-            return view('intermediateViews. examId');
-        }
-        else{
+        if (Hash::check($request->input('password'), $newSession->password)) {
+            if (strcmp($newSession->role, 'Teacher')) {
+                print_r($newSession->role);
+                $student_name=$newSession->name;
+                return view('students.searchExam',compact('student_name'));
+            } else {
+                $temp = $newSession->user_id;
+                return view('Teacher.addExam', compact('temp'));
+            }
+        } else {
             print_r("No Password");
         }
 
-        if($newSession!=null){
+        if ($newSession != null) {
             //return view('intermediateViews. examId');
-          //  print_r('Nice');
-/*            print_r($newSession);*/
+            //  print_r('Nice');
+            /*            print_r($newSession);*/
         }
 
     }

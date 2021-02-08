@@ -16,7 +16,7 @@ class CreateQuizEnrollsTable extends Migration
         Schema::create('quiz_enrolls', function (Blueprint $table) {
             $table->id('quiz_id');
             $table->integer('teacher_id');
-            $table->integer('student_id');
+            $table->string('student_name');
             $table->integer('total_marks');
             $table->integer('result');
         });
