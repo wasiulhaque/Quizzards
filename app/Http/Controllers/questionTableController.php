@@ -22,6 +22,9 @@ class questionTableController extends Controller
 
                 //
     }
+
+
+
     function showResult(Request $request){
         $exam_id=$request->input('exam_code');
         $answerScript=questionTable::where('exam_id',$exam_id)->get();

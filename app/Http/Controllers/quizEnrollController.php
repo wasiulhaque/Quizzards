@@ -82,4 +82,12 @@ class quizEnrollController extends Controller
     {
         //
     }
+
+    public function interMediateReq(Request $request){
+        $temp=$request->input('teacher_id');
+        return view('Teacher.addExam',compact('temp'));
+
+
+
+    }
 }

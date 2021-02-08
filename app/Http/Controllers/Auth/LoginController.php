@@ -8,6 +8,7 @@ use App\questionTable;
 use App\userTable;
 use http\Env\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -45,12 +46,22 @@ class LoginController extends Controller
     {
         //
 /*        print_r($request->input());*/
-        $newSession=userTable::where('phone',$request->input('phone'))
-            ->where('password',$request->input('password'))->limit(1)->firstOr(function (){
+      /*  $newSession=userTable::where('phone',$request->input('phone'))
+            ->where('password',Hash::make($request->input('password')))->limit(1)->firstOr(function (){
                 print_r('NO');
-            });
+            });*/
+        $newSession=userTable::where('phone',$request->input('phone'))->firstOr(function (){
+            print_r('NO ID');
+        });
+        if(Hash::check($request->input('password'),$newSession->password)){
+            return view('intermediateViews. examId');
+        }
+        else{
+            print_r("No Password");
+        }
+
         if($newSession!=null){
-            return view('intermediateViews.examId');
+            //return view('intermediateViews. examId');
           //  print_r('Nice');
 /*            print_r($newSession);*/
         }

@@ -48,6 +48,7 @@ Route::get('examDimu',function (){
 });
 
 Route::post('search_exam','questionTableController@showQuestion');
+Route::post('teacher_add_question','quizEnrollController@interMediateReq');
 Route::post('submitAnswer/{question_id}','questionTableController@update');
 Route::post('submitAnswer','questionTableController@forgiveMeAllah');
 Route::post('submitExam/{exam_id}','quizTableController@check');
