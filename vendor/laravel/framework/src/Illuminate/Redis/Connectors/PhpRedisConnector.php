@@ -102,10 +102,6 @@ class PhpRedisConnector implements Connector
             if (! empty($config['scan'])) {
                 $client->setOption(Redis::OPT_SCAN, $config['scan']);
             }
-
-            if (! empty($config['name'])) {
-                $client->client('SETNAME', $config['name']);
-            }
         });
     }
 
@@ -179,10 +175,6 @@ class PhpRedisConnector implements Connector
 
             if (! empty($options['failover'])) {
                 $client->setOption(RedisCluster::OPT_SLAVE_FAILOVER, $options['failover']);
-            }
-
-            if (! empty($options['name'])) {
-                $client->client('SETNAME', $options['name']);
             }
         });
     }

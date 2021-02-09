@@ -293,9 +293,4 @@ class Generator
     {
         $this->seed();
     }
-
-    public function __wakeup()
-    {
-        $this->formatters = [];
-    }
 }
