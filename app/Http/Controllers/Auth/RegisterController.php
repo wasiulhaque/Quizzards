@@ -92,8 +92,14 @@ class RegisterController extends Controller
  /*       $new_user->updated_at=time();
         $new_user->created_at=time();*/
         $new_user->save();
-        print_r($new_user);
-        return view('Teacher.teacherTask',compact('temp'));
+        $student_name=$request->input('lname');
+        if(strcmp($new_user->role,'Teacher')==0){
+
+            return view('Teacher.teacherTask',compact('temp'));
+        }
+        else{
+            return view('students.searchexam',compact('student_name'));
+        }
 
 
     }

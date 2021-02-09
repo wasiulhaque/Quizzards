@@ -60,7 +60,7 @@ class LoginController extends Controller
                 return view('students.searchExam',compact('student_name'));
             } else {
                 $temp = $newSession->user_id;
-                return view('Teacher.addExam', compact('temp'));
+                return view('Teacher.teacherTask', compact('temp'));
             }
         } else {
             print_r("No Password");

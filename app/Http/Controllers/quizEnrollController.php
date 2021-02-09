@@ -102,4 +102,8 @@ class quizEnrollController extends Controller
 
 
     }
+    public function showUpdate(Request $request){
+        $idNumber=$request->input('teacher_id');
+        return view('check',compact('idNumber'));
+    }
 }
