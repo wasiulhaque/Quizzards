@@ -7,7 +7,7 @@
 
 
         @csrf
-        <input type="hidden" id="exam_id" name="exam_id" value="{{$idNumber}}">
+        <input type="text" id="exam_id" name="exam_id" value="{{$idNumber}}">
         <label for="exam_id">Exam Id</label>
         {{--@for($i=0;$i<20;$i++)--}}
             <br>
