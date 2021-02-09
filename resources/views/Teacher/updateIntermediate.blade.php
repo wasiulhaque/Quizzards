@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('content')
-    <style>
+
+<style>
 input[type=submit] {
-    padding:10px 290px; 
+    padding:10px 307px; 
     background:#ccc; 
     border:0 none;
     cursor:pointer;
@@ -21,25 +22,31 @@ input[type=text]:focus {
 }
 
 </style>
+
 <div class = "logincontent">
 <div class="container">
 <div class="col-md-8">
     <div class="card">
+    <div class="card-header">{{ __('Update Question') }}</div>
     <div class="card-body">
-    <h2 class="card-text">You have successfully completed the test</h2>
 
-    <form action='show_result' method="post">
+    <form action="update_code" method="post">
+
         @csrf
-        <input type="hidden" id="exam_id" name="exam_id" value="{{$exam_id}}">
-        <input type="hidden" id="name" name="name" value="{{$name}}">
+        <div class="form-group row">
+        <label for="exam_code">Enter the Exam Code</label>
+        <div class="col-md-6">
+        <input type="text" name="exam_code">
+        </div></div>
 
-        <input type="submit" id="show_result" name="show_result" value="Show Result">
+        <input type="submit" name="update_code">
+
     </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
 @endsection

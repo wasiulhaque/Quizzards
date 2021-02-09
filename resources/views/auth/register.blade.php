@@ -1,10 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
     <div class="logincontent">
+    <div class="container">
+    <div class="col-md-8">
+    <h1 align = "center"> <font color="white"><b>Register to Quizzards</b> </font></h1> </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
-            <h1 align = "center"> <font color="white"><b>Register to Quizzards</b> </font></h1> 
                 <div class="card">
                     <div class="card-header">{{ __('Register') }}</div>
 
@@ -31,7 +33,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="lname"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Your name') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Your Name') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="lname" type="lname"
@@ -72,7 +74,7 @@
                                            name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
-                            <label for="cars">Choose your role:</label>
+                            <label for="cars">Your role :</label>
 
                             <select name="role" id="role">
                                 <option value="Teacher">Teacher</option>
@@ -92,5 +94,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

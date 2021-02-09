@@ -2,9 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 <style>
-body {
-    background-image: url("../images/quizzards-back.png");
-}
+
 .logincontent {
     padding: 200px;
 }
@@ -42,11 +40,11 @@ body {
       <li class="nav-item">
         <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
       </li>
-
-      
-
       <li class="nav-item">
         <a class="nav-link" href="/login">Logout</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">BCD</a>
       </li>
     </ul>
   </div>
