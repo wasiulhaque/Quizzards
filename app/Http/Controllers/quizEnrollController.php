@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\resultChart;
+use App\quizEnroll;
 use Illuminate\Http\Request;
 
 class quizEnrollController extends Controller
@@ -82,7 +84,17 @@ class quizEnrollController extends Controller
     {
         //
     }
+    public function showChart(Request $request){
+        $quiz_id=$request->input('quiz_id');
+        $result=quizEnroll::where('total_marks',$quiz_id)->pluck('student_name','result');
 
+        //print_r($result);
+        $chart=new resultChart;
+        $chart->labels($result->values());
+        $chart->dataset('By the Name of Allah','bar',$result->keys());
+        return view('chart.charts',compact('chart'));
+
+    }
     public function interMediateReq(Request $request){
         $temp=$request->input('teacher_id');
         return view('Teacher.addExam',compact('temp'));

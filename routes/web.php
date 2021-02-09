@@ -28,7 +28,7 @@ Route::get('registerOk',function (){
    return view('auth.register');
 });
 Route::get('random',function (){
-    return view('Teacher.teacherTask');
+    return view('chart.charts');
 });
 
 Route::post('register','Auth\RegisterController@store');

@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="logincontent">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-            <h1 align = "center"> <font color="white"><b>Register to Quizzards</b> </font></h1> 
                 <div class="card">
                     <div class="card-header">{{ __('Register') }}</div>
 
@@ -72,7 +71,7 @@
                                            name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
-                            <label for="cars">Choose your role:</label>
+                            <label for="cars">Choose a car:</label>
 
                             <select name="role" id="role">
                                 <option value="Teacher">Teacher</option>

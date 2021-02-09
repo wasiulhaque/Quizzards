@@ -56,7 +56,8 @@ class LoginController extends Controller
         if (Hash::check($request->input('password'), $newSession->password)) {
             if (strcmp($newSession->role, 'Teacher')) {
                 print_r($newSession->role);
-                return view('students.searchExam');
+                $student_name=$newSession->name;
+                return view('students.searchExam',compact('student_name'));
             } else {
                 $temp = $newSession->user_id;
                 return view('Teacher.teacherTask', compact('temp'));
