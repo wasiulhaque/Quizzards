@@ -9,4 +9,15 @@
         </label>
 
     </form>
+    <form action="teacher_update_question" method="post">
+        @csrf
+        <input type="hidden" name="teacher_id" value="{{$temp}}">
+        <label for="addQuestion">
+            <input type="submit" name="teacher_update_question" value="Update">
+        </label>
+
+    </form>
 @endsection
+
+
+

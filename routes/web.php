@@ -63,3 +63,8 @@ Route::get('showResult',function (){
 });
 
 Route::post('show_result','questionTableController@showresult');
+Route::get('show_chart',function (){
+    return view('chart.charts');
+});
+Route::post('give_me_chart','quizEnrollController@showChart');
+Route::post('teacher_update_question','quizEnrollController@showUpdate');

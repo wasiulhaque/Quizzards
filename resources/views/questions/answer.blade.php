@@ -3,6 +3,10 @@
 
    {{-- <form action="{{url('submitAnswer/'.$answer->question_id)}}" method="post">--}}
    <form action='submitAnswer' method="post">
+
+       <input type="hidden" name="name" id="name" value="{{$name}}">
+       <input type="hidden" name="exam_id" id="exam_id" value="{{$exam_id}}">
+      
     @foreach($answerScript as $answer)
            @csrf
                {{$ara[$answer->question_id]='option'}}
