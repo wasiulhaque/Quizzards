@@ -2,17 +2,9 @@
 
 @section('content')
 
-<style>
-body {
-    background-image: url("../images/quizzards-back.png");
-}
-.content {
-    padding: 200px;
-}
-</style>
 
 
-<div class = "content">
+<div class = "logincontent">
 <div class="container">
     <div class="row justify-content-center">
     <div class="col-md-8">
