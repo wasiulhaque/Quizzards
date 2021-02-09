@@ -1,15 +1,14 @@
 @extends('layouts.app')
 @section('content')
 
-<form action="update_code">
+    <form action="update_code" method="post">
 
-    <label for="exam_code">
-
+        @csrf
         <input type="text" name="exam_code">
 
-    </label>
+        <input type="submit" name="update_code">
 
-</form>
+    </form>
 
 
 @endsection

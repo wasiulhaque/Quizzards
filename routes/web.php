@@ -68,3 +68,6 @@ Route::get('show_chart',function (){
 });
 Route::post('give_me_chart','quizEnrollController@showChart');
 Route::post('teacher_update_question','quizEnrollController@showUpdate');
+Route::post('update_code','quizEnrollController@updateQuestion');
+Route::post('updateQuestion_action','quizEnrollController@update');
+Route::post('final_update','quizEnrollController@ok');

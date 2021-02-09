@@ -1,35 +1,37 @@
 @extends('layouts.app')
 @section('content')
-    <html>
+
+    {{-- <form action="{{url('submitAnswer/'.$answer->question_id)}}" method="post">--}}
+
+    <h2>{{$exam_id}}</h2>
 
 
-    <form action="submit" method="post">
+    <input type="hidden" name="exam_id" id="exam_id" value="{{$exam_id}}">
 
-
-        @csrf
-        <input type="hidden" id="exam_id" name="exam_id" value="{{$idNumber}}">
-        <label for="exam_id">Exam Id</label>
-        {{--@for($i=0;$i<20;$i++)--}}
-        <br>
-        <input type="text" id="question_name" name="question_name">
-        <label for="question_name">Question</label><br>
-        <input type="text" id="option_A" name="option_A">
-        <label for="option_A">Option A</label><br>
-        <input type="text" id="option_B" name="option_B">
-        <label for="option_B">Option B</label><br>
-        <input type="text" id="option_C" name="option_C">
-        <label for="option_C">Option C</label><br>
-        <input type="text" id="option_D" name="option_D">
-        <label for="option_D">Option D</label><br>
-
-        <input type="text" id="correctAnswer" name="correctAnswer">
-        <label for="correctAnswer">Correct Answer</label><br>
-        <br>
-        {{--@endfor--}}
-        <input type="submit" name="submit" id="submit">
-        <label for="submit">Submit</label>
-
+        @foreach($answerScript as $answer)
+            <form action='updateQuestion_action' method="post">
+            @csrf
+            {{$ara[$answer->question_id]='option'}}
+            <h1>
+                {{$answer->question_title}} {{$answer->question_id}}
+            </h1>
+            <input type="hidden" name="question_id" value="{{$answer->question_id}}">
+            <input type="radio" id="A" name="option[{{$answer->question_id}}]" value="A">
+            <label for="A">{{$answer->option_A}}</label>
+            <br>
+            <input type="radio" id="B" name="option[{{$answer->question_id}}]" value="B">
+            <label for="B">{{$answer->option_B}}</label>
+            <br>
+            <input type="radio" id="C" name="option[{{$answer->question_id}}]" value="C">
+            <label for="C">{{$answer->option_C}}</label>
+            <br>
+            <input type="radio" id="D" name="option[{{$answer->question_id}}]" value="D">
+            <label for="D">{{$answer->option_D}}</label>
+            <br>
+            <input type="submit" id='updateQuestion_action'  name="updateQuestion_action">
     </form>
-    </html>
+    @endforeach
 @endsection
 
+<!--
+how to delete with confirmation with laravel--

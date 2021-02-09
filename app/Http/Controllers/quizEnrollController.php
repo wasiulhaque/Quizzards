@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Charts\resultChart;
+use App\questionTable;
 use App\quizEnroll;
 use Illuminate\Http\Request;
 
@@ -69,11 +70,20 @@ class quizEnrollController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        $id=$request->input('question_id');
+        $getQuestion=questionTable::where('question_id',$id)->get();
+        return view('Teacher.updateInput',compact('id'))->with('getQuestion',$getQuestion);
     }
 
+    public function updateQuestion(Request $request){
+        $exam_id=$request->input('exam_code');
+        print_r($exam_id);
+        $answerScript=questionTable::where('exam_id',$exam_id)->get();
+        return view('Teacher.updateQuestion',compact('exam_id'))->with('answerScript',$answerScript);
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -104,6 +114,15 @@ class quizEnrollController extends Controller
     }
     public function showUpdate(Request $request){
         $idNumber=$request->input('teacher_id');
-        return view('check',compact('idNumber'));
+        return view('Teacher.updateIntermediate',compact('idNumber'));
+    }
+
+
+    public function updateLast(Request $request){
+        $title=$request->input('question_name');
+        print_r(10);
+    }
+    public function ok(){
+        print_r('nO');
     }
 }
