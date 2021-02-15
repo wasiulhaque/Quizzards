@@ -28,7 +28,7 @@ Route::get('registerOk',function (){
    return view('auth.register');
 });
 Route::get('random',function (){
-    return view('Teacher.teacherTask');
+    return view('chart.charts');
 });
 
 Route::post('register','Auth\RegisterController@store');
@@ -68,3 +68,23 @@ Route::get('show_chart',function (){
 });
 Route::post('give_me_chart','quizEnrollController@showChart');
 Route::post('teacher_update_question','quizEnrollController@showUpdate');
+Route::post('update_code','quizEnrollController@updateQuestion');
+Route::post('updateQuestion_action','quizEnrollController@update');
+Route::post('please','quizEnrollController@ok');
+
+Route::post('download_pdf','pdfController@generatePDF');
+/*Route::post('download_pdf','pdfController@check');*/
+Route::get('pdfCheck','pdfController@show');
+
+
+Route::get('pdf','pdfController@generatePDF');
+
+/*Route::get('debug',function (){
+    return view('Teacher.addAnother');
+});*/
+Route::post('add_another_question','quizTableController@another');
+Route::post('finish','quizTableController@finish');
+Route::post('showResult','quizEnrollController@search');
+Route::post('search_exam_teacher','quizEnrollController@showChart');
+
+/*Last One Alhamdulillah*/

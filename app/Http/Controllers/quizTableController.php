@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\quizEnroll;
+use App\quizTable;
 use Illuminate\Http\Request;
 
 class quizTableController extends Controller
@@ -22,9 +23,23 @@ class quizTableController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        $new = new quizTable;
+        $new->id=1;
+        $new->quiz_id = 12;
+        $new->teacher_id =111;
+/*        $new->quiz_title='M';
+        $new->marks=27;
+        $new->starting_time=time();
+        $new->ending_time=time();
+        $new->quiz_type='MCQ';
+        $new->course='N';
+        $new->topic='M';*/
+
+        $new->save();
+
     }
 
 
@@ -113,6 +128,53 @@ class quizTableController extends Controller
         $new->course=$request->input('course');
         $new->topic=$request->input('topic');
 
-        return view('questions.question', compact(['idNumber']));
+
+        $temp = $request->input('teacher_id');
+        $teacher_id = $request->input('teacher_id');
+        $exam_code=$request->input('exam_code');
+
+        $table=quizTable::where('quiz_id',$exam_code)->where('teacher_id',$temp)->count();
+        if($table>0){
+
+
+            return view('questions.question', compact('teacher_id','exam_code'));
+        }
+    else{
+            $newTable=quizTable::where('quiz_id',$exam_code)->count();
+            if($newTable>0){
+                print_r("The Quiz ID is Taken");
+            }
+            elseif ($newTable==0) {
+                $insert = new quizTable;
+                $insert->id = rand(0, 1000);
+                $insert->quiz_id = $exam_code;
+                $insert->teacher_id = $temp;
+                $insert->save();
+                return view('questions.question', compact(['idNumber']));
+            }
+        }
+
+    }
+
+    public function another(Request $request){
+
+        $exam_code=$request->input('exam_id');
+        $teacher_id=$request->input('teacher_id');
+
+        return view('questions.question',compact('exam_code','teacher_id'));
+
+
+
+    }
+    public function finish(Request $request){
+
+
+        $exam_code=$request->input('exam_id');
+        $temp=$request->input('teacher_id');
+
+        return view('Teacher.addExam',compact('temp'));
+
+
+
     }
 }

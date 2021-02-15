@@ -51,18 +51,19 @@ class LoginController extends Controller
                   print_r('NO');
               });*/
         $newSession = userTable::where('phone', $request->input('phone'))->firstOr(function () {
-            print_r('NO ID');
+            print_r('NOT Registered');
         });
         if (Hash::check($request->input('password'), $newSession->password)) {
             if (strcmp($newSession->role, 'Teacher')) {
-                print_r($newSession->role);
-                return view('students.searchExam');
+
+                $student_name=$newSession->name;
+                return view('students.searchExam',compact('student_name'));
             } else {
                 $temp = $newSession->user_id;
                 return view('Teacher.teacherTask', compact('temp'));
             }
         } else {
-            print_r("No Password");
+            print_r("Password is Incorrect");
         }
 
         if ($newSession != null) {

@@ -26,26 +26,38 @@ class questionTableController extends Controller
 
 
     function showResult(Request $request){
-        $exam_id=$request->input('exam_code');
+        $exam_id=$request->input('exam_id');
         $answerScript=questionTable::where('exam_id',$exam_id)->get();
 
+        $name=$request->input('name');
         $count=0;
+        $total_mark=0;
         foreach (questionTable::where('exam_id',$exam_id)->cursor() as $individual){
 
+            $total_mark++;
             if(strcmp($individual->student_answer,$individual->correct_answer)==0){
                 $count++;
             }
 
         }
-        print_r($count);
 
-       /* return view('students.yourResult')->with('count',$count);*/
+        $new= new quizEnroll;
+        $new->quiz_id=Rand(0,100);
+        $new->result=$count;
+        $new->teacher_id='123';
+        $new->student_name=$name;
+        $new->total_marks=$exam_id;
+
+        $new->save();
+        return view('chart.chartMiddleware',compact('exam_id','count'));
+        /* return view('students.yourResult')->with('count',$count);*/
     }
 
     public function showQuestion(Request $request){
-        $id=$request->input('exam_code');
-        $answerScript=questionTable::where('exam_id',$id)->get();
-        return view('questions.answer')->with('answerScript',$answerScript);
+        $exam_id=$request->input('exam_code');
+        $name=$request->input('student_name');
+        $answerScript=questionTable::where('exam_id',$exam_id)->get();
+        return view('questions.answer',compact('name','exam_id'))->with('answerScript',$answerScript);
 
     }
     /**
@@ -68,12 +80,14 @@ class questionTableController extends Controller
     public function store(Request $request)
     {
         //
-        print_r($request->input());
+     /*   print_r($request->input());*/
+
         $newQuestion=new questionTable;
 
-        $temp=rand(0,1000);
+        $temp=$request->input();
         $temp2=rand(0,10000);
         $newQuestion->question_id=$temp2;
+
         $newQuestion->exam_id=$request->exam_id;
         $newQuestion->question_title=$request->question_name;
         $newQuestion->option_A=$request->option_A;
@@ -82,8 +96,10 @@ class questionTableController extends Controller
         $newQuestion->option_D=$request->option_D;
         $newQuestion->student_answer='E';
         $newQuestion->correct_answer=$request->correctAnswer;
-
-        echo $newQuestion->save();
+        $exam=$request->exam_id;
+        $teacher=$request->teacher_id;
+        $newQuestion->save();
+        return view('Teacher.addAnother',compact('exam','teacher'));
     }
 
     /**
@@ -126,15 +142,23 @@ class questionTableController extends Controller
     }
     public function forgiveMeAllah(Request $request){
 
-
+        $name=$request->input('name');
+        $exam_id=$request->input('exam_id');
      foreach ($request->input('option') as $optionNum=>$optionVal){
-         print_r($optionNum);
-         print_r($optionVal);
+      /*   print_r($optionNum);
+         print_r($optionVal);*/
          $new=questionTable::find($optionNum);
          $new->student_answer=$optionVal;
          $new->save();
 
      }
+/*     print_r($name);
+     print_r($exam_id);*/
+     return view('students.showResult',compact('name','exam_id'));
+
+
+
+
     }
 
     /**

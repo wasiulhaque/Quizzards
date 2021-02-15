@@ -2,9 +2,10 @@
 @section('content')
     <form action='search_exam_teacher' method="post">
         @csrf
-        <input type="text" id="exam_code" name="exam_code">
-        <input type="hidden" id="student_name" name="student_name" value="{{$student_name}}">
-        <h1>{{$student_name}}</h1>
-        <input type="submit" id="exm_submit" name="exm_submit">
+
+        <input type="text" name="quiz_id">
+
+
+        <input type="submit"  name="search_exam_teacher">
     </form>
 @endsection
